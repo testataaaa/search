@@ -3,278 +3,488 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRFNZ Partner Prospects v2</title>
+<title>CRFNZ Partner Prospects v4</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f5f4f1;--surface:#fff;--surface2:#f0efe9;--border:rgba(0,0,0,0.1);--border2:rgba(0,0,0,0.2);--text:#1a1a1a;--text2:#555;--text3:#999;--r:10px;--rsm:6px;--blue:#185FA5}
 @media(prefers-color-scheme:dark){:root{--bg:#111;--surface:#1c1c1c;--surface2:#232323;--border:rgba(255,255,255,0.09);--border2:rgba(255,255,255,0.18);--text:#e2e2e2;--text2:#aaa;--text3:#666}}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:14px;color:var(--text);background:var(--bg);min-height:100vh}
-a{color:var(--blue)}
 header{background:var(--surface);border-bottom:1px solid var(--border);padding:1.25rem 1.75rem;position:sticky;top:0;z-index:100}
-.header-inner{max-width:980px;margin:0 auto}
+.hi{max-width:980px;margin:0 auto}
 header h1{font-size:19px;font-weight:700;margin-bottom:2px}
 header p{font-size:12px;color:var(--text3)}
 main{max-width:980px;margin:0 auto;padding:1.25rem 1rem 4rem}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:1.25rem}
-.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:.6rem .8rem;text-align:center}
-.stat-n{font-size:22px;font-weight:700;line-height:1}
-.stat-l{font-size:11px;color:var(--text3);margin-top:3px}
-.filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(85px,1fr));gap:7px;margin-bottom:1.25rem}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:.55rem .7rem;text-align:center}
+.stat-n{font-size:19px;font-weight:700;line-height:1.1}
+.stat-l{font-size:10px;color:var(--text3);margin-top:2px}
+.fr{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px;align-items:center}
 input[type=text],select{background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:var(--rsm);padding:6px 10px;font-size:12px;outline:none;font-family:inherit}
-input[type=text]{flex:1 1 180px;min-width:120px}
+input[type=text]{flex:1 1 160px;min-width:120px}
 input[type=text]:focus,select:focus{border-color:var(--blue)}
-.chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
-.chip{font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:var(--text2);font-family:inherit;transition:all .1s;white-space:nowrap}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
+.chip{font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:var(--text2);font-family:inherit;white-space:nowrap;transition:all .1s}
 .chip:hover{background:var(--surface2)}
 .chip.active{font-weight:600}
-.chip-danger{border-color:#F09595;color:#A32D2D;background:#FCEBEB}
-.chip-danger:hover{background:#f7d9d9}
-.section-divider{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin:1.25rem 0 .5rem;padding-bottom:4px;border-bottom:1px solid var(--border)}
-.count{font-size:12px;color:var(--text3);margin-bottom:10px}
+.chip-x{border-color:#F09595;color:#A32D2D;background:#FCEBEB}
+.chip-x:hover{background:#f5d5d5}
+.sdiv{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin:1.25rem 0 .5rem;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.count{font-size:12px;color:var(--text3);margin-bottom:9px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
-.card-header{padding:12px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:11px;user-select:none}
-.card-header:hover{background:rgba(0,0,0,0.013)}
-@media(prefers-color-scheme:dark){.card-header:hover{background:rgba(255,255,255,0.025)}}
-.initials{width:38px;height:38px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;flex-shrink:0;letter-spacing:.5px;margin-top:1px}
-.meta{flex:1;min-width:0}
-.name-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:5px}
-.name{font-weight:700;font-size:14px}
+.card:hover{box-shadow:0 1px 8px rgba(0,0,0,0.07)}
+@media(prefers-color-scheme:dark){.card:hover{box-shadow:0 1px 8px rgba(0,0,0,0.35)}}
+.ch{padding:12px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:11px;user-select:none}
+.ch:hover{background:rgba(0,0,0,0.013)}
+@media(prefers-color-scheme:dark){.ch:hover{background:rgba(255,255,255,0.025)}}
+.av{width:38px;height:38px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;flex-shrink:0;letter-spacing:.5px;margin-top:1px}
+.me{flex:1;min-width:0}
+.nr{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:5px}
+.nm{font-weight:700;font-size:14px}
 .hq{font-size:11px;color:var(--text3)}
-.tag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;border:1px solid;white-space:nowrap}
-.tags-row{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:7px}
-.badges-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:var(--rsm);border:1px solid}
-.chevron{font-size:10px;color:var(--text3);flex-shrink:0;margin-top:5px;transition:transform .2s;display:inline-block}
-.chevron.open{transform:rotate(180deg)}
-.card-body{border-top:1px solid var(--border);padding:14px 16px;background:var(--surface2);display:none}
-.card-body.open{display:block}
-.body-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:520px){.body-grid{grid-template-columns:1fr}}
+.tg{display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;border:1px solid;white-space:nowrap}
+.tr{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.br{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.bg{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--rsm);border:1px solid}
+.cv{font-size:10px;color:var(--text3);flex-shrink:0;margin-top:4px;transition:transform .2s;display:inline-block}
+.cv.open{transform:rotate(180deg)}
+.cb{border-top:1px solid var(--border);padding:14px 16px;background:var(--surface2);display:none}
+.cb.open{display:block}
+.bg2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:520px){.bg2{grid-template-columns:1fr}}
 .sl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:6px}
-.product-row{display:flex;align-items:flex-start;gap:7px;margin-bottom:6px}
+.pr{display:flex;align-items:flex-start;gap:7px;margin-bottom:6px}
 .fp{font-size:9px;padding:1px 6px;border-radius:4px;border:.5px solid;flex-shrink:0;margin-top:2px;font-weight:600}
 .fy{background:#EAF3DE;color:#27500A;border-color:#97C459}
 .fn{background:#F1EFE8;color:#5F5E5A;border-color:#B4B2A9}
-.pname{font-size:12px;font-weight:600}
-.pind{font-size:11px;color:var(--text2);margin-left:3px}
+.pn{font-size:12px;font-weight:600}
+.pi{font-size:11px;color:var(--text2);margin-left:3px}
 .pnote{font-size:10px;color:#BA7517;margin-left:3px}
-.btext{font-size:12px;line-height:1.65;margin-bottom:13px;color:var(--text)}
-.btext:last-child{margin-bottom:0}
-.pres{font-size:11px;color:var(--text2);line-height:1.5}
-.mag-badges{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
-.mag-badge{font-size:10px;padding:2px 8px;border-radius:4px;border:1px solid;font-weight:600}
-.mag-bb{background:#E1F5EE;color:#085041;border-color:#5DCAA5}
-.mag-hoa{background:#FBEAF0;color:#4B1528;border-color:#D4537E}
-.mag-both{background:#EEEDFE;color:#26215C;border-color:#7F77DD}
-.no-results{text-align:center;padding:3rem 1rem;color:var(--text3);font-size:13px}
-footer{text-align:center;font-size:11px;color:var(--text3);padding:1.5rem 1rem;border-top:1px solid var(--border);line-height:1.7;margin-top:2rem}
-.type-pharma{background:#E6F1FB;color:#042C53;border-color:#378ADD}
-.type-device{background:#FAEEDA;color:#412402;border-color:#EF9F27}
-.type-insurer{background:#EEEDFE;color:#26215C;border-color:#7F77DD}
-.type-air{background:#EAF3DE;color:#173404;border-color:#639922}
-.nz-star{background:#E1F5EE;color:#04342C;border-color:#1D9E75}
+.bt{font-size:12px;line-height:1.65;margin-bottom:12px}
+.bt:last-child{margin-bottom:0}
+.pre{font-size:11px;color:var(--text2);line-height:1.5}
+.audience-section{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+@media(max-width:520px){.aud-grid{grid-template-columns:1fr}}
+.aud-card{border-radius:var(--rsm);padding:10px 12px;border:1px solid}
+.aud-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.aud-text{font-size:12px;line-height:1.6}
+.aud-consumer{background:#E6F1FB;border-color:#85B7EB;color:#042C53}
+.aud-consumer .aud-label{color:#0C447C}
+.aud-hcp{background:#EEEDFE;border-color:#AFA9EC;color:#26215C}
+.aud-hcp .aud-label{color:#3C3489}
+.aud-none{background:var(--surface2);border-color:var(--border2);color:var(--text2)}
+.aud-none .aud-label{color:var(--text3)}
+/* audience badge */
+.abg-consumer{background:#E6F1FB;color:#0C447C;border-color:#85B7EB}
+.abg-hcp{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
+.abg-both{background:#E1F5EE;color:#04342C;border-color:#1D9E75}
+.type-p{background:#F1EFE8;color:#2C2C2A;border-color:#B4B2A9}
+.type-d{background:#FAEEDA;color:#412402;border-color:#EF9F27}
+.type-i{background:#EEEDFE;color:#26215C;border-color:#7F77DD}
+.type-a{background:#EAF3DE;color:#173404;border-color:#639922}
+.nzco{background:#E1F5EE;color:#04342C;border-color:#1D9E75}
+.ep{background:#E1F5EE;color:#04342C;border-color:#1D9E75}
+.no-r{text-align:center;padding:3rem 1rem;color:var(--text3);font-size:13px}
+footer{text-align:center;font-size:11px;color:var(--text3);padding:1.5rem 1rem;border-top:1px solid var(--border);line-height:1.7;margin-top:1.5rem}
 </style>
 </head>
 <body>
 <header>
-  <div class="header-inner">
-    <span style="font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:3px">CRFNZ · Internal working tool</span>
-    <h1>Partner prospects — pharma, devices &amp; beyond</h1>
-    <p>Pharmaceutical companies, medical device makers and other categories for sponsored content, magazine co-funding and digital campaigns.</p>
-  </div>
+<div class="hi">
+  <span style="font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:3px">CRFNZ · Internal working tool · v4</span>
+  <h1>Partner prospects — pharma, devices &amp; beyond</h1>
+  <p>28 companies across four categories. Each card shows both consumer audience (patients / whānau / public) and HCP audience (GPs, nurses, specialists) campaign angles separately.</p>
+</div>
 </header>
 <main>
-  <div class="stats" id="stats"></div>
-  <div class="filter-row">
-    <input type="text" id="search" placeholder="Search company, product or area…">
-    <select id="typeFilter">
-      <option value="all">All categories</option>
-      <option value="Pharma">💊 Pharmaceuticals</option>
-      <option value="Device">🩺 Medical devices</option>
-      <option value="Insurer">🛡 Health insurer</option>
-      <option value="Air quality">🌿 Air quality</option>
-    </select>
-    <select id="advFilter">
-      <option value="all">All advertising levels</option>
-      <option value="high">🟢 Actively advertising</option>
-      <option value="medium">🟡 Moderate NZ activity</option>
-      <option value="low">🔴 Low consumer presence</option>
-    </select>
-    <select id="magFilter">
-      <option value="all">All magazines</option>
-      <option value="BB">Better Breathing</option>
-      <option value="HOA">Heart of Aotearoa</option>
-    </select>
-    <select id="charityFilter">
-      <option value="all">All charity status</option>
-      <option value="yes">Has NZ charity link</option>
-      <option value="none">No NZ charity yet</option>
-    </select>
-  </div>
-  <div class="chips" id="chips"></div>
-  <p class="count" id="count"></p>
-  <div id="cards"></div>
+<div class="stats" id="stats"></div>
+<div class="fr">
+  <input type="text" id="search" placeholder="Search company, product or area…">
+  <select id="typeF"><option value="all">All categories</option><option value="Pharma">💊 Pharma</option><option value="Device">🩺 Devices</option><option value="Insurer">🛡 Insurer</option><option value="Air">🌿 Air quality</option></select>
+  <select id="audF"><option value="all">All campaign audiences</option><option value="Consumer">👥 Consumer / patient</option><option value="HCP">🩺 HCP / clinical</option><option value="Both">🔄 Both audiences</option></select>
+  <select id="advF"><option value="all">All advertising levels</option><option value="high">🟢 Actively advertising</option><option value="medium">🟡 Moderate NZ activity</option><option value="low">🔴 Low NZ consumer presence</option></select>
+  <select id="magF"><option value="all">All magazines</option><option value="BB">Better Breathing</option><option value="HOA">Heart of Aotearoa</option></select>
+  <select id="cF"><option value="all">All charity status</option><option value="yes">Has NZ charity link</option><option value="none">No NZ charity yet</option></select>
+</div>
+<div class="chips" id="chips"></div>
+<p class="count" id="count"></p>
+<div id="cards"></div>
 </main>
 <footer>
-  Based on Pharmac schedule, Medsafe registrations, Medicines NZ, MDINZ membership and public NZ charity partnerships as at mid-2026.<br>
-  Advertising ratings are editorial assessments. "Pharmac funded" = subsidised; unfunded products may still be prescribable. NZ company = headquartered in NZ.<br>
-  Built for CRFNZ internal use only.
+  Based on Pharmac schedule, Medsafe registrations, MDINZ/Medicines NZ membership and public NZ charity partnerships as at mid-2026.<br>
+  "Funded" = Pharmac-subsidised; unfunded products may still be prescribable. NZ company = headquartered in NZ.<br>
+  Campaign audience ratings are editorial assessments for CRFNZ sponsored content strategy. Built for CRFNZ internal use only.
 </footer>
 <script>
-const COMPANIES=[
-{id:"astrazeneca",name:"AstraZeneca NZ",hq:"UK/Sweden",nzPresence:"Full NZ affiliate (Auckland)",type:"Pharma",areas:["Asthma","COPD","Lung Cancer","Vaccinations"],magazine:["BB","HOA"],keyProducts:[{name:"Symbicort",indication:"Asthma / COPD",funded:true},{name:"Pulmicort",indication:"Asthma",funded:true},{name:"Fasenra (benralizumab)",indication:"Severe eosinophilic asthma",funded:true},{name:"Breztri Aerosphere",indication:"COPD triple therapy",funded:true,note:"Funded Jan 2025"},{name:"Tagrisso (osimertinib)",indication:"NSCLC lung cancer",funded:true,note:"Funded Jan 2025"}],advertising:"high",advertisingNote:"Dedicated NZ consumer site takeyourbreathback.co.nz for Symbicort. COPD Day campaign live at kmtrust.org.nz/copd-day. Active HCP campaigns across respiratory portfolio.",nzCharity:"Already CRFNZ partner",nzCharityDetail:"Existing ARFNZ & KMT sponsor. COPD Day digital campaign live. Prime candidate for expansion into lung cancer awareness and Better Breathing magazine editorial.",existingPartner:true,nzCompany:false,color:"#0F6E56",initials:"AZ"},
-{id:"gsk",name:"GSK NZ",hq:"UK",nzPresence:"Full NZ affiliate (Auckland)",type:"Pharma",areas:["Asthma","COPD","Vaccinations"],magazine:["BB"],keyProducts:[{name:"Ventolin (salbutamol)",indication:"Asthma reliever",funded:true},{name:"Seretide",indication:"Asthma / COPD",funded:true},{name:"Nucala (mepolizumab)",indication:"Severe eosinophilic asthma",funded:true},{name:"Trelegy Ellipta",indication:"COPD triple therapy",funded:false,note:"Not yet Pharmac funded"},{name:"Fluarix Tetra",indication:"Influenza vaccine",funded:true}],advertising:"high",advertisingNote:"Active NZ HCP and consumer campaigns. Ventolin is the most recognised brand in NZ asthma. Nucala severe asthma awareness growing. Trelegy unfunded status means incentive to build patient/GP awareness.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ health charity sponsorships found. Core product range maps directly to CRFNZ's respiratory mission — a natural first-approach target.",existingPartner:false,nzCompany:false,color:"#185FA5",initials:"GSK"},
-{id:"novartis",name:"Novartis NZ",hq:"Switzerland",nzPresence:"ANZ office (Sydney-based, NZ via AU)",type:"Pharma",areas:["Asthma","COPD","Cardiac","Cholesterol"],magazine:["BB","HOA"],keyProducts:[{name:"Xolair (omalizumab)",indication:"Severe allergic asthma",funded:true},{name:"Seebri / Onbrez",indication:"COPD",funded:true},{name:"Entresto (sacubitril/valsartan)",indication:"Heart failure",funded:true},{name:"Leqvio (inclisiran)",indication:"High cholesterol (LDL-C)",funded:false,note:"Not yet Pharmac funded — global priority"}],advertising:"high",advertisingNote:"KMT cholesterol campaign already live (kmtrust.org.nz/cholesterol). Leqvio is a global commercial priority — expect active NZ push. Entresto well-established in heart failure.",nzCharity:"Already CRFNZ partner",nzCharityDetail:"Existing KMT cholesterol campaign. Previously had major Pharmac multi-product deal. Strong base to build both respiratory and cardiac content partnerships.",existingPartner:true,nzCompany:false,color:"#534AB7",initials:"NVS"},
-{id:"boehringer",name:"Boehringer Ingelheim NZ",hq:"Germany",nzPresence:"450 ANZ staff — CV, metabolic, renal, respiratory, oncology",type:"Pharma",areas:["COPD","Cardiac","Blood Pressure"],magazine:["BB","HOA"],keyProducts:[{name:"Spiriva (tiotropium)",indication:"COPD",funded:true},{name:"Ofev (nintedanib)",indication:"IPF / pulmonary fibrosis",funded:true},{name:"Jardiance (empagliflozin)",indication:"Heart failure / cardiac",funded:true},{name:"Pradaxa (dabigatran)",indication:"Anticoagulant / AF",funded:true}],advertising:"high",advertisingNote:"Already funds Heart Foundation NZ patient resources (medical education grant model). Participates in Heart Foundation MyMarathon. Jardiance is a major global heart failure priority.",nzCharity:"Heart Foundation NZ",nzCharityDetail:"Funds Heart Foundation NZ patient education resources. Also joined Heart Foundation NZ MyMarathon. Active cardiac charity funder — strong target for Heart of Aotearoa magazine editorial.",existingPartner:false,nzCompany:false,color:"#853F0B",initials:"BI"},
-{id:"sanofi",name:"Sanofi NZ",hq:"France",nzPresence:"NZ office (Auckland — Ellerslie)",type:"Pharma",areas:["Asthma","COPD","Vaccinations","Cardiac","Cholesterol"],magazine:["BB","HOA"],keyProducts:[{name:"Dupixent (dupilumab)",indication:"Severe asthma / COPD / atopic dermatitis",funded:true,note:"COPD indication expanding 2025"},{name:"Beyfortus (nirsevimab)",indication:"RSV prevention in infants",funded:true,note:"Funded Jan 2025 — current NZ story"},{name:"Praluent (alirocumab)",indication:"High cholesterol (PCSK9i)",funded:false,note:"Not yet Pharmac funded"},{name:"Fluzone / Vaxigrip Tetra",indication:"Influenza vaccines",funded:true}],advertising:"high",advertisingNote:"Dupixent is among the world's highest-revenue medicines. Heavy investment in severe asthma awareness. RSV vaccine Beyfortus is a very current NZ story. COPD indication expanding globally.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Dupixent's asthma + COPD dual indication makes Sanofi an excellent CRFNZ prospect for Better Breathing biologic treatment content.",existingPartner:false,nzCompany:false,color:"#533AB7",initials:"SNF"},
-{id:"msd",name:"MSD NZ (Merck)",hq:"USA",nzPresence:"Full NZ affiliate (Auckland — Newmarket)",type:"Pharma",areas:["Lung Cancer","Vaccinations","Cholesterol"],magazine:["BB","HOA"],keyProducts:[{name:"Keytruda (pembrolizumab)",indication:"NSCLC + multiple cancers",funded:true,note:"Multiple indications funded 2024–25"},{name:"Gardasil 9",indication:"HPV vaccine",funded:true},{name:"Pneumovax 23",indication:"Pneumococcal vaccine (older adults)",funded:true},{name:"Zetia (ezetimibe)",indication:"High cholesterol",funded:true}],advertising:"high",advertisingNote:"Keytruda is one of the world's highest-revenue cancer drugs. NZ funding expansions mean active HCP and patient education campaigns now. Lung cancer angle very strong for CRFNZ.",nzCharity:"Breast Cancer Foundation NZ",nzCharityDetail:"MSD NZ has helped fund BCFNZ patient resources. Good track record of NZ charity-aligned content funding.",existingPartner:false,nzCompany:false,color:"#3B6D11",initials:"MSD"},
-{id:"pfizer",name:"Pfizer NZ",hq:"USA",nzPresence:"Full NZ affiliate (Auckland — Mt Wellington)",type:"Pharma",areas:["Lung Cancer","Vaccinations","Cardiac","Cholesterol"],magazine:["BB","HOA"],keyProducts:[{name:"Xalkori (crizotinib)",indication:"ROS1+ NSCLC lung cancer",funded:true,note:"Newly funded Apr 2025"},{name:"Prevnar 20",indication:"Pneumococcal vaccine",funded:true},{name:"Comirnaty",indication:"COVID-19 vaccine",funded:true},{name:"Eliquis (apixaban)",indication:"Anticoagulant / AF",funded:true,note:"Co-promo with BMS"}],advertising:"medium",advertisingNote:"Eliquis heavily promoted globally. New Xalkori funding (Apr 2025) creates strong NZ lung cancer story. Active research grants arm funds NZ health studies.",nzCharity:"Breast Cancer Foundation NZ",nzCharityDetail:"Pfizer NZ provided a grant for a breast cancer treatment pathways study commissioned by BCFNZ. Has appetite for NZ health research funding.",existingPartner:false,nzCompany:false,color:"#185FA5",initials:"PFZ"},
-{id:"roche",name:"Roche NZ",hq:"Switzerland",nzPresence:"~100 NZ employees (Auckland). In NZ since 1973.",type:"Pharma",areas:["Lung Cancer"],magazine:["BB"],keyProducts:[{name:"Tecentriq (atezolizumab)",indication:"NSCLC immunotherapy",funded:true},{name:"Alecensa (alectinib)",indication:"ALK+ NSCLC",funded:true},{name:"Avastin (bevacizumab)",indication:"NSCLC / various cancers",funded:true},{name:"Dec 2025 Pharmac deal",indication:"MS, breast cancer, lung cancer",funded:true,note:"5 medicines funded Dec 2025"}],advertising:"medium",advertisingNote:"Active NZ comms around every Pharmac funding decision. Lung cancer is a core NZ focus. GM publicly acknowledged Lung Foundation NZ's advocacy work.",nzCharity:"Lung Foundation NZ (acknowledged)",nzCharityDetail:"Roche NZ GM publicly acknowledged Lung Foundation NZ for lung cancer access advocacy. Warm relationship — no confirmed financial sponsorship but a natural conversation to initiate.",existingPartner:false,nzCompany:false,color:"#A32D2D",initials:"ROC"},
-{id:"viatris",name:"Viatris NZ",hq:"USA (Mylan + Upjohn/Pfizer)",nzPresence:"NZ entity (viatris.nz). Generic + branded.",type:"Pharma",areas:["Asthma","COPD","Cardiac","Blood Pressure","Cholesterol"],magazine:["BB","HOA"],keyProducts:[{name:"Wixela Inhub (fluticasone/salmeterol)",indication:"Asthma / COPD — generic",funded:true},{name:"Respigen (salbutamol)",indication:"Asthma reliever — generic",funded:true},{name:"Norvasc (amlodipine) generic",indication:"Blood pressure",funded:true},{name:"Lipitor (atorvastatin) generic",indication:"Cholesterol",funded:true}],advertising:"low",advertisingNote:"Generic portfolio — less DTC push. But their long-term CFNZ model (CF Conference, Achievers Awards, Awareness Week) is exactly the partnership model to propose for CRFNZ.",nzCharity:"Cystic Fibrosis NZ",nzCharityDetail:"Long-term CFNZ sponsor: CF Conference, CF Achievers Awards, CF Awareness Week. Former CFNZ CE came from Viatris NZ leadership. This model is replicable for CRFNZ.",existingPartner:false,nzCompany:false,color:"#633806",initials:"VTR"},
-{id:"novonordisk",name:"Novo Nordisk NZ",hq:"Denmark",nzPresence:"ANZ affiliate (Auckland)",type:"Pharma",areas:["Cardiac","Blood Pressure"],magazine:["HOA"],keyProducts:[{name:"Ozempic (semaglutide)",indication:"T2 diabetes + CV risk reduction",funded:true},{name:"Rybelsus (oral semaglutide)",indication:"T2 diabetes + cardiac risk",funded:true},{name:"Victoza (liraglutide)",indication:"T2 diabetes + CV benefit",funded:true}],advertising:"high",advertisingNote:"Semaglutide is arguably the most discussed medicine globally. Strong CV outcome trial data. Weight and heart health is a highly topical angle for the CRFNZ cardiac audience.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Cardiovascular risk reduction + weight overlap is compelling for Heart of Aotearoa Magazine.",existingPartner:false,nzCompany:false,color:"#0C447C",initials:"NNO"},
-{id:"bms",name:"Bristol-Myers Squibb NZ",hq:"USA",nzPresence:"ANZ presence (Auckland contact listed)",type:"Pharma",areas:["Lung Cancer","Cardiac"],magazine:["BB","HOA"],keyProducts:[{name:"Opdivo (nivolumab)",indication:"NSCLC / kidney cancer immunotherapy",funded:true,note:"Multiple indications funded 2024–25"},{name:"Yervoy (ipilimumab)",indication:"Kidney cancer / other cancers",funded:true,note:"Funded Apr 2025"},{name:"Eliquis (apixaban)",indication:"Anticoagulant / AF",funded:true,note:"Co-marketed with Pfizer"}],advertising:"medium",advertisingNote:"Opdivo + Yervoy recently newly funded — expect active NZ communications. Eliquis is one of the highest-revenue cardiac medicines globally. Lung cancer + cardiac double angle.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Eliquis AF and stroke prevention is a potential co-branded editorial topic for Heart of Aotearoa.",existingPartner:false,nzCompany:false,color:"#993556",initials:"BMS"},
-{id:"chiesi",name:"Chiesi NZ (Emerge Health)",hq:"Italy",nzPresence:"NZ entity trading as Emerge Health NZ",type:"Pharma",areas:["Asthma","COPD"],magazine:["BB"],keyProducts:[{name:"Trimbow (BDP/formoterol/glycopyrronium)",indication:"COPD triple therapy",funded:true},{name:"Foster (beclometasone/formoterol)",indication:"Asthma / COPD",funded:true},{name:"Curosurf",indication:"Neonatal respiratory distress",funded:true}],advertising:"medium",advertisingNote:"Specialist respiratory company — 30+ years in the space. Strong COPD triple therapy focus for HCPs. Less consumer-facing but full portfolio-mission alignment.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Clean exclusive content partnership opportunity for Better Breathing magazine given full respiratory portfolio alignment.",existingPartner:false,nzCompany:false,color:"#0F6E56",initials:"CHI"},
-{id:"seqirus",name:"Seqirus NZ",hq:"Australia (CSL subsidiary)",nzPresence:"NZ office (Auckland — Parnell)",type:"Pharma",areas:["Vaccinations"],magazine:["BB","HOA"],keyProducts:[{name:"Afluria Tetra",indication:"Influenza vaccine (standard dose)",funded:true},{name:"Fluad Quad",indication:"Influenza vaccine (adjuvanted, 65+)",funded:true}],advertising:"medium",advertisingNote:"Seasonal NZ campaigns (April–June). Strong 65+ market overlaps with respiratory and cardiac risk populations. Flu vaccination for at-risk groups is a practical editorial topic.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Flu vaccination for asthma, COPD and cardiac patients is a compelling co-branded content angle for both magazines.",existingPartner:false,nzCompany:false,color:"#185FA5",initials:"SEQ"},
-{id:"takeda",name:"Takeda NZ",hq:"Japan",nzPresence:"NZ entity (Medicines NZ member)",type:"Pharma",areas:["COPD","Cardiac"],magazine:["BB","HOA"],keyProducts:[{name:"Daxas (roflumilast)",indication:"Severe COPD — oral anti-inflammatory",funded:true},{name:"Opsumit (macitentan)",indication:"Pulmonary arterial hypertension",funded:true},{name:"Adcirca (tadalafil)",indication:"Pulmonary arterial hypertension",funded:true}],advertising:"low",advertisingNote:"Lower NZ consumer profile. PAH bridges cardiac and respiratory — niche but on-brand for CRFNZ.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. PAH is a rare but important respiratory-cardiac overlap condition for specialist magazine content.",existingPartner:false,nzCompany:false,color:"#E24B4A",initials:"TAK"},
-{id:"adherium",name:"Adherium (Hailie Smart Inhaler)",hq:"New Zealand",nzPresence:"NZ-founded company (ASX listed). Smart inhaler hardware + app platform.",type:"Device",areas:["Asthma","COPD"],magazine:["BB"],keyProducts:[{name:"Hailie Smart Inhaler",indication:"Adherence tracking for Ventolin, Symbicort, Fostair",funded:false,note:"Consumer/clinical subscription model"},{name:"Hailie Platform",indication:"HCP-facing data dashboard",funded:false}],advertising:"medium",advertisingNote:"NZ-founded, ASX-listed company — strong NZ pride angle. Partners with AstraZeneca globally. Raised $2.6M capital in 2025 for US rollout. Directly relevant to ARFNZ/CRFNZ's inhaler adherence messaging.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships but this is a NZ company with natural alignment. CRFNZ could position as the NZ health charity partner for a domestic awareness push around inhaler adherence.",existingPartner:false,nzCompany:true,color:"#1D9E75",initials:"ADH"},
-{id:"resmed",name:"ResMed NZ",hq:"USA/Australia (ANZ HQ Sydney)",nzPresence:"NZ direct-to-consumer store (resmed.co.nz). Widely distributed via sleep clinics.",type:"Device",areas:["COPD","Sleep Apnea"],magazine:["BB"],keyProducts:[{name:"AirSense 11 CPAP",indication:"Obstructive sleep apnea",funded:false,note:"WSNZ partially subsidises for some patients"},{name:"AirCurve BiPAP",indication:"Sleep apnea / chronic respiratory failure",funded:false},{name:"myAir app",indication:"CPAP adherence monitoring",funded:false}],advertising:"high",advertisingNote:"Strong NZ consumer brand — direct online store, active social media. Sleep apnea is highly prevalent in COPD patients (~25% overlap). Massively under-diagnosed in NZ — huge awareness content opportunity.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ health charity sponsorships. Sleep apnea awareness for people with respiratory and cardiac conditions is a natural CRFNZ magazine angle — affects both Better Breathing and Heart of Aotearoa audiences.",existingPartner:false,nzCompany:false,color:"#185FA5",initials:"RMD"},
-{id:"fph",name:"Fisher & Paykel Healthcare",hq:"New Zealand (NZX/ASX listed)",nzPresence:"HQ in Auckland (East Tamaki). ~5,000+ employees globally. Major NZ manufacturer.",type:"Device",areas:["Asthma","COPD","Lung Cancer"],magazine:["BB"],keyProducts:[{name:"Optiflow (high-flow nasal therapy)",indication:"Respiratory support / COPD exacerbations",funded:false,note:"Hospital device — clinical use"},{name:"Airvo humidification systems",indication:"Respiratory therapy",funded:false},{name:"CPAP / NIV masks",indication:"Sleep apnea / respiratory failure",funded:false}],advertising:"medium",advertisingNote:"NZ's most prominent medical device company and a national success story. Optiflow used in hospitals globally for COPD and COVID respiratory care. Strong NZ brand pride angle for CRFNZ partnership.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ health charity sponsorships found. A NZ company with global reach — partnership with CRFNZ would be a natural NZ health sector alignment. Optiflow for COPD exacerbations is a real editorial topic.",existingPartner:false,nzCompany:true,color:"#0C447C",initials:"F&P"},
-{id:"omron",name:"Omron Healthcare NZ",hq:"Japan",nzPresence:"NZ distributor (Omron products widely available in NZ retail and pharmacies)",type:"Device",areas:["Blood Pressure","Cardiac"],magazine:["HOA"],keyProducts:[{name:"Omron blood pressure monitors",indication:"Home BP monitoring — cardiac risk management",funded:false,note:"Consumer device — pharmacy/retail"},{name:"Omron HeartGuide",indication:"Wrist-worn BP monitor + ECG",funded:false},{name:"Complete (BP + ECG)",indication:"Detects atrial fibrillation",funded:false,note:"New AF detection feature"}],advertising:"high",advertisingNote:"Omron is the #1 consumer blood pressure monitor brand globally and widely sold in NZ pharmacies. New AF detection capability in their devices makes them directly relevant to CRFNZ cardiac messaging.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ health charity sponsorships. Home blood pressure monitoring awareness content is a natural Heart of Aotearoa editorial co-funding opportunity.",existingPartner:false,nzCompany:false,color:"#A32D2D",initials:"OMR"},
-{id:"withings",name:"Withings",hq:"France",nzPresence:"Available in NZ via online retail (JB Hi-Fi, Harvey Norman etc.)",type:"Device",areas:["Blood Pressure","Cardiac"],magazine:["HOA"],keyProducts:[{name:"ScanWatch",indication:"ECG + SpO2 + heart rate wearable",funded:false,note:"CE/FDA cleared — consumer wearable"},{name:"BPM Connect",indication:"WiFi/Bluetooth BP monitor",funded:false},{name:"ScanWatch Light",indication:"Continuous HR + SpO2 monitoring",funded:false}],advertising:"medium",advertisingNote:"Premium connected health device brand — actively expanding in ANZ. ScanWatch can detect AF and low SpO2 — both highly relevant to cardiac and respiratory audiences. Growing category.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ health charity sponsorships. ScanWatch's AF detection and SpO2 monitoring creates a strong story for both Heart of Aotearoa and Better Breathing audiences.",existingPartner:false,nzCompany:false,color:"#533AB7",initials:"WTH"},
-{id:"nexus6",name:"Nexus6 (SmartTrack)",hq:"New Zealand",nzPresence:"NZ-founded company (Auckland). SmartTrack device used in NZ/international clinical research.",type:"Device",areas:["Asthma","COPD"],magazine:["BB"],keyProducts:[{name:"SmartTrack inhaler monitor",indication:"Adherence tracking — metered dose inhalers",funded:false,note:"Used in clinical research programmes"},{name:"Research platform",indication:"Real-world adherence data collection",funded:false}],advertising:"low",advertisingNote:"Small NZ-founded health tech company. SmartTrack used in published clinical trials. Niche but a genuine NZ success story in respiratory digital health — potential awareness angle.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Strong NZ-made story for CRFNZ — could co-create inhaler adherence awareness content.",existingPartner:false,nzCompany:true,color:"#0F6E56",initials:"NX6"},
-{id:"iqair",name:"IQAir",hq:"Switzerland",nzPresence:"Available in NZ (iqair.com/nz). High-end HEPA air purifiers sold online and via specialist retailers.",type:"Air quality",areas:["Asthma","COPD"],magazine:["BB"],keyProducts:[{name:"HealthPro Plus",indication:"HEPA air purifier — asthma / allergy / COPD",funded:false,note:"Premium consumer device"},{name:"AirVisual Pro",indication:"Indoor/outdoor air quality monitor",funded:false}],advertising:"medium",advertisingNote:"Premium positioning — actively markets to people with asthma and respiratory conditions. Air quality and indoor pollution is a growing content topic for respiratory health organisations. Strong magazine content angle.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Air quality content (indoor allergens, wildfire smoke, pollen seasons) is highly relevant for Better Breathing magazine and CRFNZ's respiratory audience.",existingPartner:false,nzCompany:false,color:"#3B6D11",initials:"IQA"},
-{id:"dyson",name:"Dyson NZ",hq:"UK/Singapore",nzPresence:"Full NZ retail presence (dyson.co.nz + major retailers). NZ subsidiary.",type:"Air quality",areas:["Asthma"],magazine:["BB"],keyProducts:[{name:"Purifier Cool Formaldehyde",indication:"HEPA air purifier + fan — allergen/particle removal",funded:false,note:"Consumer product — widely sold NZ"},{name:"Purifier Hot+Cool",indication:"HEPA air purifier + heater",funded:false},{name:"Dyson Zone (air purifying headphones)",indication:"Personal air filtration",funded:false}],advertising:"high",advertisingNote:"Very active NZ advertising. Dyson markets their air purifiers explicitly to allergy and asthma sufferers. Backed by scientific research claims. Premium positioning with wide NZ consumer awareness.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ health charity sponsorships. Air quality and allergen reduction messaging for asthma patients is a natural editorial co-funding angle for Better Breathing magazine.",existingPartner:false,nzCompany:false,color:"#BA7517",initials:"DYS"},
-{id:"southerncross",name:"Southern Cross Health Society",hq:"New Zealand",nzPresence:"NZ-headquartered health insurer. Largest health insurer in NZ with ~900,000 members.",type:"Insurer",areas:["Asthma","COPD","Cardiac","Blood Pressure","Cholesterol"],magazine:["BB","HOA"],keyProducts:[{name:"Health insurance plans",indication:"Covers specialist, surgical, diagnostic care for respiratory and cardiac conditions",funded:false,note:"NZ's largest health insurer"}],advertising:"high",advertisingNote:"Very active NZ advertiser — TV, digital, radio. Strong NZ brand. Members include people with respiratory and cardiac conditions — direct audience overlap with CRFNZ. Wellness content partnerships fit their strategy.",nzCharity:"Various NZ health charities",nzCharityDetail:"Southern Cross has a history of supporting NZ health causes and community initiatives. As NZ's largest health insurer, partnering with CRFNZ on member education content would fit their 'better health for all Kiwis' positioning.",existingPartner:false,nzCompany:true,color:"#185FA5",initials:"SXH"},
-{id:"nib",name:"nib NZ",hq:"Australia (NZX listed, NZ subsidiary)",nzPresence:"NZ subsidiary (nib.co.nz). Second largest health insurer in NZ.",type:"Insurer",areas:["Asthma","COPD","Cardiac","Blood Pressure","Cholesterol"],magazine:["BB","HOA"],keyProducts:[{name:"Health insurance plans",indication:"Respiratory, cardiac and specialist cover",funded:false,note:"Listed NZX; NZ member base"}],advertising:"medium",advertisingNote:"Active NZ digital and TV advertising. Growing NZ health insurance market. Wellness content and preventative health messaging aligns with their member engagement strategy.",nzCharity:"None confirmed",nzCharityDetail:"No confirmed NZ charity sponsorships. Preventative health content for people with respiratory or cardiac conditions is a natural member-value proposition for nib.",existingPartner:false,nzCompany:false,color:"#2AB27B",initials:"NIB"},
+const D=[
+// ── PHARMA ──────────────────────────────────────────────────────────────────
+{id:"az",name:"AstraZeneca NZ",hq:"UK/Sweden",nzP:"Full NZ affiliate (Auckland)",type:"Pharma",areas:["Asthma","COPD","Lung Cancer","Vaccinations"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Inhaler education and technique (Symbicort/Breztri), asthma triggers, COPD self-management, lung cancer awareness and early detection. Campaign already live: kmtrust.org.nz COPD Day.",
+hcpAngle:"Fasenra biologic criteria and referral pathways for severe eosinophilic asthma. Tagrisso (osimertinib) for EGFR+ NSCLC — newly funded, GP/oncologist awareness of testing pathways. Breztri triple therapy for COPD step-up.",
+products:[{n:"Symbicort",i:"Asthma / COPD",f:true},{n:"Fasenra (benralizumab)",i:"Severe eosinophilic asthma",f:true},{n:"Breztri Aerosphere",i:"COPD triple therapy",f:true,note:"Funded Jan 2025"},{n:"Tagrisso (osimertinib)",i:"NSCLC lung cancer",f:true,note:"Funded Jan 2025"}],
+adv:"high",advN:"Runs takeyourbreathback.co.nz NZ consumer site for Symbicort. COPD Day campaign already live at kmtrust.org.nz. Active HCP detailing across full respiratory portfolio.",
+charity:"Already CRFNZ partner",charityN:"Existing ARFNZ & KMT sponsor. COPD Day digital campaign live. Strong base to expand into lung cancer awareness and Better Breathing co-funded editorial.",ep:true,nzco:false,col:"#0F6E56",ini:"AZ"},
+
+{id:"gsk",name:"GSK NZ",hq:"UK",nzP:"Full NZ affiliate (Auckland)",type:"Pharma",areas:["Asthma","COPD","Vaccinations"],mag:["BB"],
+audience:"Both",
+consumerAngle:"Asthma reliever vs preventer education (Ventolin overuse is a key NZ problem). When to step up treatment. Shingles vaccine awareness for older adults with respiratory conditions.",
+hcpAngle:"Nucala (mepolizumab) biologic eligibility for severe eosinophilic asthma — referral criteria for respiratory physicians. Trelegy unfunded status may drive GP awareness campaigns to build Pharmac pressure.",
+products:[{n:"Ventolin (salbutamol)",i:"Asthma reliever",f:true},{n:"Seretide",i:"Asthma / COPD",f:true},{n:"Nucala (mepolizumab)",i:"Severe eosinophilic asthma",f:true},{n:"Trelegy Ellipta",i:"COPD triple therapy",f:false,note:"Not yet Pharmac funded"},{n:"Fluarix Tetra",i:"Influenza vaccine",f:true}],
+adv:"high",advN:"Active NZ HCP and consumer campaigns. Ventolin overuse is a major NZ asthma issue — very strong consumer education angle. Nucala severe asthma pathway is growing HCP focus.",
+charity:"None confirmed",charityN:"No confirmed NZ health charity sponsorships. Core product range maps directly to CRFNZ's respiratory mission — natural first-approach target.",ep:false,nzco:false,col:"#185FA5",ini:"GSK"},
+
+{id:"nvs",name:"Novartis NZ",hq:"Switzerland",nzP:"ANZ office (Sydney-based, NZ via AU)",type:"Pharma",areas:["Asthma","COPD","Cardiac","Cholesterol"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Cholesterol and heart health — Leqvio campaign already live at kmtrust.org.nz/cholesterol. Heart failure awareness (Entresto). Living well with severe asthma.",
+hcpAngle:"Xolair (omalizumab) eligibility and referral for severe allergic asthma. Leqvio (inclisiran) twice-yearly injection for persistent high LDL — primary care prescribing awareness as Pharmac access sought.",
+products:[{n:"Xolair (omalizumab)",i:"Severe allergic asthma",f:true},{n:"Seebri / Onbrez",i:"COPD LAMA/LABA",f:true},{n:"Entresto (sacubitril/valsartan)",i:"Heart failure",f:true},{n:"Leqvio (inclisiran)",i:"High LDL-C",f:false,note:"Not yet Pharmac funded — global priority"}],
+adv:"high",advN:"KMT cholesterol campaign already live. Leqvio is a global commercial priority. Entresto well-established in heart failure management.",
+charity:"Already CRFNZ partner",charityN:"Existing KMT cholesterol campaign. Large Pharmac multi-product deal history. Strong base to expand into both magazines.",ep:true,nzco:false,col:"#534AB7",ini:"NVS"},
+
+{id:"bi",name:"Boehringer Ingelheim NZ",hq:"Germany",nzP:"450 ANZ staff — CV, metabolic, renal, respiratory, oncology",type:"Pharma",areas:["COPD","Cardiac","Blood Pressure"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Living with COPD — Spiriva adherence and why it matters. Heart failure awareness — signs, symptoms and Jardiance. AF and anticoagulation — Pradaxa and stroke prevention. Already co-funding Heart Foundation NZ print resources.",
+hcpAngle:"Spiriva step-up for COPD patients not controlled on SABA/ICS. Jardiance heart failure prescribing in primary care. Ofev (nintedanib) for IPF — specialist referral pathways. Pradaxa AF management in general practice.",
+products:[{n:"Spiriva (tiotropium)",i:"COPD",f:true},{n:"Ofev (nintedanib)",i:"IPF / pulmonary fibrosis",f:true},{n:"Jardiance (empagliflozin)",i:"Heart failure / cardiac risk",f:true},{n:"Pradaxa (dabigatran)",i:"Anticoagulant / AF",f:true}],
+adv:"high",advN:"Funds Heart Foundation NZ patient education print resources (medical education grant). Participated in NZ Heart Foundation MyMarathon. Jardiance is a global heart failure priority product.",
+charity:"Heart Foundation NZ",charityN:"Funds Heart Foundation NZ patient resources and their MyMarathon. Active cardiac charity funder — strong target for Heart of Aotearoa magazine.",ep:false,nzco:false,col:"#853F0B",ini:"BI"},
+
+{id:"sanofi",name:"Sanofi NZ",hq:"France",nzP:"NZ office (Auckland — Ellerslie)",type:"Pharma",areas:["Asthma","COPD","Vaccinations","Cardiac","Cholesterol"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Severe asthma — what biologics are and when to ask your GP. RSV protection for infants and older adults (Beyfortus). Flu vaccination for at-risk groups. Cholesterol management (Praluent, when funded).",
+hcpAngle:"Dupixent (dupilumab) eligibility criteria and referral for severe asthma — also expanding COPD indication. Beyfortus prescribing for RSV in at-risk newborns. Primary care cholesterol management with Praluent when access opens.",
+products:[{n:"Dupixent (dupilumab)",i:"Severe asthma / COPD / atopic dermatitis",f:true,note:"COPD indication expanding 2025"},{n:"Beyfortus (nirsevimab)",i:"RSV prevention in infants",f:true,note:"Funded Jan 2025"},{n:"Praluent (alirocumab)",i:"High cholesterol (PCSK9i)",f:false,note:"Not yet Pharmac funded"},{n:"Fluzone / Vaxigrip Tetra",i:"Influenza vaccines",f:true}],
+adv:"high",advN:"Dupixent is one of the world's highest-revenue medicines. Heavy investment in severe asthma awareness. RSV vaccine Beyfortus is a current NZ story. COPD indication expanding globally.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Dupixent asthma + COPD dual indication makes Sanofi an excellent CRFNZ prospect.",ep:false,nzco:false,col:"#533AB7",ini:"SNF"},
+
+{id:"msd",name:"MSD NZ (Merck)",hq:"USA",nzP:"Full NZ affiliate (Auckland — Newmarket)",type:"Pharma",areas:["Lung Cancer","Vaccinations","Cholesterol"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Lung cancer — early detection, knowing your risk, reducing stigma. HPV vaccination awareness. Pneumococcal vaccine for older adults with respiratory conditions.",
+hcpAngle:"Keytruda (pembrolizumab) eligibility for NSCLC — PD-L1 testing pathways, new NZ-funded indications. Pneumovax 23 prescribing reminders for at-risk patients (COPD, cardiac). Ezetimibe step-up in cholesterol management.",
+products:[{n:"Keytruda (pembrolizumab)",i:"NSCLC + multiple cancers",f:true,note:"Multiple NZ indications funded 2024–25"},{n:"Gardasil 9",i:"HPV vaccine",f:true},{n:"Pneumovax 23",i:"Pneumococcal vaccine (65+)",f:true},{n:"Zetia (ezetimibe)",i:"High cholesterol",f:true}],
+adv:"high",advN:"Keytruda is one of the world's highest-revenue cancer drugs. NZ funding expansions mean active patient education campaigns are underway.",
+charity:"Breast Cancer Foundation NZ",charityN:"MSD NZ has helped fund BCFNZ patient resources. Good NZ track record of charity-aligned content funding.",ep:false,nzco:false,col:"#3B6D11",ini:"MSD"},
+
+{id:"pfizer",name:"Pfizer NZ",hq:"USA",nzP:"Full NZ affiliate (Auckland — Mt Wellington)",type:"Pharma",areas:["Lung Cancer","Vaccinations","Cardiac","Cholesterol"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Lung cancer awareness — Xalkori newly funded for a specific mutation, what does that mean for patients? Vaccine awareness (Prevnar pneumococcal). AF and anticoagulation — Eliquis and stroke prevention.",
+hcpAngle:"Xalkori — ROS1 testing protocols and referral criteria for newly funded NSCLC indication. Eliquis prescribing in AF / stroke prevention. Prevnar 20 prescribing in primary care for respiratory patients.",
+products:[{n:"Xalkori (crizotinib)",i:"ROS1+ NSCLC",f:true,note:"Newly funded Apr 2025"},{n:"Lorbrena (lorlatinib)",i:"ALK+ NSCLC",f:false},{n:"Prevnar 20",i:"Pneumococcal vaccine",f:true},{n:"Eliquis (apixaban)",i:"Anticoagulant / AF",f:true,note:"Co-promo with BMS"}],
+adv:"medium",advN:"Eliquis heavily promoted globally. New Xalkori funding (Apr 2025) creates a current NZ lung cancer story. Research grants arm funds NZ health studies.",
+charity:"Breast Cancer Foundation NZ",charityN:"Pfizer NZ funded a breast cancer treatment pathways study commissioned by BCFNZ. Has appetite for NZ health research grants.",ep:false,nzco:false,col:"#185FA5",ini:"PFZ"},
+
+{id:"roche",name:"Roche NZ",hq:"Switzerland",nzP:"~100 NZ employees (Auckland). Roche Pharma + Roche Diagnostics. In NZ since 1973.",type:"Pharma",areas:["Lung Cancer"],mag:["BB"],
+audience:"HCP",
+consumerAngle:"",
+hcpAngle:"Tecentriq (atezolizumab) and Alecensa (alectinib) — immunotherapy and targeted therapy awareness for respiratory physicians and oncologists. PD-L1 testing and biomarker-guided prescribing. Roche Diagnostics NZ — lung cancer diagnostic testing pathways for GPs.",
+products:[{n:"Tecentriq (atezolizumab)",i:"NSCLC immunotherapy",f:true},{n:"Alecensa (alectinib)",i:"ALK+ NSCLC",f:true},{n:"Avastin (bevacizumab)",i:"NSCLC / various",f:true},{n:"Dec 2025 Pharmac deal",i:"MS, breast cancer, lung cancer",f:true,note:"5 medicines funded Dec 2025"}],
+adv:"medium",advN:"Active NZ comms around every Pharmac funding decision. Lung cancer is a core NZ focus. GM publicly acknowledged Lung Foundation NZ's patient advocacy work.",
+charity:"Lung Foundation NZ (acknowledged)",charityN:"Roche NZ GM acknowledged Lung Foundation NZ CEO Philip Hope by name for lung cancer access advocacy. Warm relationship — no confirmed financial sponsorship yet.",ep:false,nzco:false,col:"#A32D2D",ini:"ROC"},
+
+{id:"viatris",name:"Viatris NZ",hq:"USA (Mylan + Upjohn/Pfizer)",nzP:"NZ entity (viatris.nz). Generic + branded. JANZ segment.",type:"Pharma",areas:["Asthma","COPD","Cardiac","Blood Pressure","Cholesterol"],mag:["BB","HOA"],
+audience:"Consumer",
+consumerAngle:"Inhaler adherence and generic inhaler education. Long-term community engagement model (like CFNZ) — awareness weeks, awards, events rather than product campaigns. Affordable medicines access messaging.",
+hcpAngle:"",
+products:[{n:"Wixela Inhub (fluticasone/salmeterol)",i:"Asthma / COPD — generic inhaler",f:true},{n:"Respigen (salbutamol)",i:"Asthma reliever — generic",f:true},{n:"Norvasc (amlodipine) generic",i:"Blood pressure",f:true},{n:"Lipitor (atorvastatin) generic",i:"Cholesterol",f:true}],
+adv:"low",advN:"Generic portfolio — less DTC push. Their CFNZ model (conference, awards, awareness week sponsorship) is the long-term community partnership model to propose for CRFNZ.",
+charity:"Cystic Fibrosis NZ",charityN:"Long-term CFNZ sponsor: CF Conference, CF Achievers Awards, CF Awareness Week. Former CFNZ CE came from Viatris NZ leadership. This model is directly replicable for CRFNZ.",ep:false,nzco:false,col:"#633806",ini:"VTR"},
+
+{id:"nno",name:"Novo Nordisk NZ",hq:"Denmark",nzP:"ANZ affiliate (Auckland)",type:"Pharma",areas:["Cardiac","Blood Pressure"],mag:["HOA"],
+audience:"Both",
+consumerAngle:"Weight and heart health — how managing obesity reduces cardiac risk. Ozempic/Wegovy public awareness around cardiovascular outcomes beyond diabetes. Heart health and metabolic health connection.",
+hcpAngle:"Semaglutide (Ozempic/Rybelsus) cardiovascular outcome data for primary care — prescribing in high-risk cardiac patients with T2 diabetes. Metabolic-to-cardiac risk management in general practice.",
+products:[{n:"Ozempic (semaglutide)",i:"T2 diabetes + CV risk reduction",f:true},{n:"Rybelsus (oral semaglutide)",i:"T2 diabetes + cardiac risk",f:true},{n:"Victoza (liraglutide)",i:"T2 diabetes + CV benefit",f:true}],
+adv:"high",advN:"Semaglutide is arguably the most discussed medicine globally. Strong CV outcome trial data drives HCP campaigns. Weight and heart health is a topical angle for CRFNZ's cardiac audience.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Cardiovascular risk reduction + weight overlap is compelling for Heart of Aotearoa magazine.",ep:false,nzco:false,col:"#0C447C",ini:"NNO"},
+
+{id:"bms",name:"Bristol-Myers Squibb NZ",hq:"USA",nzP:"ANZ presence (Auckland)",type:"Pharma",areas:["Lung Cancer","Cardiac"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Lung cancer immunotherapy — what checkpoint inhibitors mean for patients, hope for advanced disease. AF and stroke prevention — Eliquis for patients with AF, explaining why anticoagulation matters.",
+hcpAngle:"Opdivo (nivolumab) newly funded indications — prescribing pathways for respiratory physicians. Eliquis in AF management — NOAC dosing and monitoring in primary care.",
+products:[{n:"Opdivo (nivolumab)",i:"NSCLC / kidney cancer immunotherapy",f:true,note:"Multiple indications funded 2024–25"},{n:"Yervoy (ipilimumab)",i:"Kidney cancer",f:true,note:"Funded Apr 2025"},{n:"Eliquis (apixaban)",i:"Anticoagulant / AF",f:true,note:"Co-marketed with Pfizer"}],
+adv:"medium",advN:"Opdivo + Yervoy recently funded — expect active NZ comms. Eliquis is one of the highest-revenue cardiac medicines globally.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Eliquis AF/stroke prevention is a potential co-branded editorial topic for Heart of Aotearoa.",ep:false,nzco:false,col:"#993556",ini:"BMS"},
+
+{id:"chiesi",name:"Chiesi NZ (Emerge Health)",hq:"Italy",nzP:"NZ entity trading as Emerge Health NZ",type:"Pharma",areas:["Asthma","COPD"],mag:["BB"],
+audience:"HCP",
+consumerAngle:"",
+hcpAngle:"Trimbow (triple therapy) for COPD patients not controlled on dual bronchodilation — step-up criteria and prescribing for respiratory physicians. Foster beclometasone/formoterol for asthma/COPD in patients with ICS adherence issues. HCP-targeted content around COPD progression and phenotyping.",
+products:[{n:"Trimbow (BDP/formoterol/glycopyrronium)",i:"COPD triple therapy",f:true},{n:"Foster (beclometasone/formoterol)",i:"Asthma / COPD",f:true},{n:"Curosurf (poractant alfa)",i:"Neonatal respiratory distress",f:true}],
+adv:"medium",advN:"Specialist respiratory company — 30+ years in the space. HCP-focused, less consumer. Entire portfolio aligns with CRFNZ respiratory mission.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Could be a clean, exclusive Better Breathing HCP-targeted content partnership.",ep:false,nzco:false,col:"#0F6E56",ini:"CHI"},
+
+{id:"seq",name:"Seqirus NZ",hq:"Australia (CSL subsidiary)",nzP:"NZ office (Auckland — Parnell)",type:"Pharma",areas:["Vaccinations"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Flu vaccination for people with asthma, COPD or heart conditions — why they're a priority group. Seasonal campaign content (April–June NZ). Fluad adjuvanted vaccine for 65+ with respiratory or cardiac conditions.",
+hcpAngle:"Flu vaccination rates in high-risk patients (COPD, heart failure, post-cardiac event). Fluad vs standard dose for immunocompromised and older patients — prescribing and recall systems.",
+products:[{n:"Afluria Tetra",i:"Influenza vaccine (standard dose)",f:true},{n:"Fluad Quad",i:"Influenza vaccine (adjuvanted, 65+)",f:true}],
+adv:"medium",advN:"Seasonal NZ campaigns (April–June). Strong 65+ market overlaps exactly with respiratory and cardiac risk populations.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Flu vaccination for asthma, COPD and cardiac patients is a compelling co-branded angle for both magazines.",ep:false,nzco:false,col:"#185FA5",ini:"SEQ"},
+
+{id:"tak",name:"Takeda NZ",hq:"Japan",nzP:"NZ entity (Medicines NZ member)",type:"Pharma",areas:["COPD","Cardiac"],mag:["BB","HOA"],
+audience:"HCP",
+consumerAngle:"",
+hcpAngle:"Daxas (roflumilast) — oral anti-inflammatory add-on for severe COPD with frequent exacerbations, prescribing criteria for respiratory physicians. Opsumit (macitentan) for pulmonary arterial hypertension — specialist referral criteria and monitoring.",
+products:[{n:"Daxas (roflumilast)",i:"Severe COPD — oral anti-inflammatory",f:true},{n:"Opsumit (macitentan)",i:"Pulmonary arterial hypertension (PAH)",f:true},{n:"Adcirca (tadalafil)",i:"Pulmonary arterial hypertension",f:true}],
+adv:"low",advN:"Lower NZ consumer profile. PAH bridges cardiac and respiratory — specialist focus.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. PAH specialist editorial content.",ep:false,nzco:false,col:"#E24B4A",ini:"TAK"},
+
+// ── DEVICES ─────────────────────────────────────────────────────────────────
+{id:"fph",name:"Fisher & Paykel Healthcare",hq:"New Zealand (NZX/ASX: FPH)",nzP:"HQ East Tamaki, Auckland. ~6,000 employees globally. Major NZ manufacturer and exporter.",type:"Device",areas:["Asthma","COPD","Sleep Apnea"],mag:["BB"],
+audience:"Both",
+consumerAngle:"Sleep apnea awareness — undiagnosed OSA in people with COPD and heart disease. SleepStyle CPAP product education. Why treating sleep apnea improves respiratory and cardiac outcomes. Strong NZ-made story.",
+hcpAngle:"Optiflow high-flow nasal therapy — evidence base for COPD exacerbation management and post-extubation care in hospital. Humidification in NIV for respiratory failure. CPAP therapy initiation protocols for OSA — home vs in-clinic setup.",
+products:[{n:"SleepStyle / ICON CPAP",i:"Obstructive sleep apnea — home therapy",f:false,note:"ACC partial subsidy possible"},{n:"Optiflow (high-flow nasal therapy)",i:"COPD exacerbations / hospital respiratory",f:false,note:"Hospital device"},{n:"Airvo humidification",i:"Home respiratory care / COPD",f:false},{n:"F&P CPAP masks (Eson 2, Vitera, Brevida)",i:"OSA mask range",f:false}],
+adv:"medium",advN:"NZ's most prominent medical device company — a genuine NZ success story with global reach. SleepStyle sold direct-to-consumer and via sleep clinics. Optiflow widely used in NZ hospitals.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Partnership with CRFNZ would be a natural NZ health sector story — sleep apnea awareness for COPD and cardiac patients is a proven editorial topic.",ep:false,nzco:true,col:"#0C447C",ini:"F&P"},
+
+{id:"resmed",name:"ResMed NZ",hq:"USA/Australia",nzP:"NZ direct-to-consumer store (resmed.co.nz). Distributed via sleep clinics and CPAP retailers NZ-wide.",type:"Device",areas:["COPD","Sleep Apnea","Cardiac"],mag:["BB","HOA"],
+audience:"Both",
+consumerAngle:"Sleep apnea education — signs, symptoms, what CPAP therapy is and how it works. Why undiagnosed OSA increases cardiac risk (AF, hypertension, heart failure). CPAP adherence tips. Online sleep assessment tool.",
+hcpAngle:"OSA screening in COPD and cardiac patients — clinical identification and referral. CPAP outcomes data and adherence monitoring via myAir platform for GPs to review. High-flow Airvo for home COPD management.",
+products:[{n:"AirSense 11 CPAP/APAP",i:"Obstructive sleep apnea",f:false,note:"ACC partial subsidy for some"},{n:"AirCurve BiPAP",i:"Sleep apnea / chronic respiratory failure",f:false},{n:"myAir app",i:"CPAP adherence monitoring",f:false},{n:"myAirvo (high-flow therapy)",i:"Home COPD respiratory care",f:false}],
+adv:"high",advN:"Strong NZ consumer brand — online store, social media, sleep clinic network. Sleep apnea overlaps heavily with COPD and is a major risk factor for AF and heart failure.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Sleep apnea awareness for respiratory and cardiac patients is compelling for both CRFNZ magazines.",ep:false,nzco:false,col:"#185FA5",ini:"RMD"},
+
+{id:"edwards",name:"Edwards Lifesciences NZ",hq:"USA",nzP:"NZ entity (Edwards Lifesciences NZ Ltd — confirmed NZ device register). Products used in all major NZ cardiac surgical centres.",type:"Device",areas:["Cardiac"],mag:["HOA"],
+audience:"HCP",
+consumerAngle:"",
+hcpAngle:"TAVR (transcatheter aortic valve replacement) — Sapien 3 valve for aortic stenosis: patient selection criteria, heart team collaboration, and post-procedure care for cardiologists and cardiac surgeons. TEER (transcatheter edge-to-edge repair) — Pascal device for mitral regurgitation, who qualifies and why. Critical care monitoring systems (EV1000, ClearSight) for cardiac surgical teams. This is a premium HCP educational content opportunity — Edwards already has a track record of sponsoring HCP-targeted clinical articles (as per the TEER article example).",
+products:[{n:"Sapien 3 (TAVR)",i:"Transcatheter aortic valve replacement",f:false,note:"DHB/hospital funded — surgical procedure"},{n:"Pascal (TEER)",i:"Transcatheter mitral valve repair",f:false,note:"Growing NZ cardiology use"},{n:"EVOQUE (TEER)",i:"Transcatheter tricuspid valve replacement",f:false,note:"Newer procedure — NZ early adoption"},{n:"EV1000 / ClearSight",i:"Critical care haemodynamic monitoring",f:false}],
+adv:"low",advN:"Entirely hospital/specialist-facing — no consumer advertising. But Edwards is an active funder of HCP clinical education content globally, including journal articles and professional events. Exactly the model used for the TEER article.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Entirely HCP-focused — the right pitch to Edwards is a clinical education article in Heart of Aotearoa for cardiologists and cardiac nurses, not a consumer campaign.",ep:false,nzco:false,col:"#E24B4A",ini:"EDW"},
+
+{id:"medtronic",name:"Medtronic NZ",hq:"Ireland/USA",nzP:"Full NZ entity (confirmed NZ medical device register). Distributed via NZ cardiology departments.",type:"Device",areas:["Cardiac","Blood Pressure"],mag:["HOA"],
+audience:"Both",
+consumerAngle:"Living with a pacemaker or ICD — what to expect, common questions, daily life. Heart failure device therapy — when devices are recommended and what life with one looks like. AF detection and management.",
+hcpAngle:"Micra leadless pacemaker — patient selection and implant criteria for electrophysiologists. ICD and CRT-D programming for heart failure with reduced EF. Remote monitoring via Medtronic CareLink — GP integration and alert management.",
+products:[{n:"Micra leadless pacemaker",i:"Cardiac pacing — smallest pacemaker available",f:false,note:"DHB/hospital funded"},{n:"Azure MRI pacemaker",i:"Cardiac pacing / bradycardia",f:false},{n:"CRT-D / ICD systems",i:"Heart failure / sudden cardiac arrest prevention",f:false},{n:"IN.PACT Admiral DCB",i:"Peripheral arterial disease",f:false}],
+adv:"low",advN:"Hospital/specialist-facing — no consumer advertising. But funds patient education content globally. Patient experience stories around cardiac devices are legitimate Heart of Aotearoa editorial.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Patient experience editorial around living with implanted cardiac devices is a natural Heart of Aotearoa angle.",ep:false,nzco:false,col:"#185FA5",ini:"MDT"},
+
+{id:"bsc",name:"Boston Scientific NZ",hq:"USA",nzP:"Full NZ entity (Boston Scientific Pty Ltd NZ — confirmed NZ device register). Used in NZ cardiac centres.",type:"Device",areas:["Cardiac","COPD"],mag:["HOA","BB"],
+audience:"HCP",
+consumerAngle:"",
+hcpAngle:"Farapulse pulsed field ablation (PFA) for AF — rapidly expanding in NZ, primary care referral awareness for symptomatic AF patients. Emblem S-ICD (subcutaneous ICD) — patient selection, no-lead advantage. Spiration valve system for bronchoscopic lung volume reduction in severe COPD — specialist referral criteria for respiratory physicians.",
+products:[{n:"Farapulse (pulsed field ablation)",i:"Atrial fibrillation ablation — rapidly growing in NZ",f:false,note:"DHB funded; expanding access"},{n:"Emblem S-ICD",i:"Subcutaneous defibrillator — no cardiac leads",f:false},{n:"Empower leadless pacemaker",i:"Cardiac pacing",f:false},{n:"Spiration valve system",i:"Bronchoscopic lung volume reduction — severe COPD",f:false,note:"Niche — bridges respiratory + device"}],
+adv:"low",advN:"Specialist hospital cardiology focus. Farapulse for AF is one of the fastest-growing cardiac procedures globally. Spiration valve bridges respiratory and device worlds.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. AF referral awareness and severe COPD interventional options are HCP-targeted editorial topics.",ep:false,nzco:false,col:"#993556",ini:"BSC"},
+
+{id:"abbott",name:"Abbott NZ",hq:"USA",nzP:"Full NZ entity (Abbott Australasia). Products distributed nationally.",type:"Device",areas:["Cardiac","Blood Pressure","Cholesterol"],mag:["HOA"],
+audience:"Both",
+consumerAngle:"FreeStyle Libre — managing diabetes and reducing cardiac risk. Understanding that people with T2 diabetes have 2–4× higher cardiac risk. AF detection via Confirm Rx monitor — a 'Holter you forget you're wearing'.",
+hcpAngle:"FreeStyle Libre in high-risk cardiac patients with T2 diabetes — prescribing pathways and Pharmac access. Confirm Rx (insertable cardiac monitor) for cryptogenic stroke and paroxysmal AF in primary care referral. LVAD therapy for end-stage heart failure.",
+products:[{n:"FreeStyle Libre (CGM)",i:"Continuous glucose monitoring — cardiac risk in diabetes",f:true,note:"Pharmac funded for T1; T2 expanding"},{n:"Aveir leadless pacemaker",i:"Cardiac pacing",f:false},{n:"Confirm Rx (insertable cardiac monitor)",i:"Long-term AF / arrhythmia monitoring",f:false},{n:"HeartMate LVAD",i:"Heart failure device — ventricular assist",f:false}],
+adv:"medium",advN:"FreeStyle Libre is one of the most recognised medical devices in NZ. Confirm Rx cardiac monitor used to detect hidden AF. Growing consumer health presence.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Diabetes-to-cardiac risk link (FreeStyle Libre users are high cardiac risk) bridges Abbott's devices with CRFNZ's cardiac audience.",ep:false,nzco:false,col:"#0C447C",ini:"ABT"},
+
+{id:"alivecor",name:"AliveCor / KardiaMobile NZ",hq:"USA",nzP:"Dedicated NZ distributor (kardiamobile.co.nz, Auckland — 09 887 0323). Product in NZ pharmacies and online.",type:"Device",areas:["Cardiac"],mag:["HOA"],
+audience:"Both",
+consumerAngle:"Home ECG monitoring — how to check for AF yourself. Silent AF and stroke risk. KardiaMobile in practice: what to do when you get an abnormal reading. Great 'know your heart' awareness angle for general public.",
+hcpAngle:"KardiaMobile 6L for GP-initiated rhythm monitoring in suspected paroxysmal AF. Sharing ECG data with cardiologists. Reducing unnecessary referrals via point-of-care ECG screening.",
+products:[{n:"KardiaMobile (single-lead ECG)",i:"Home ECG / AF detection",f:false,note:"Consumer device — available NZ pharmacies"},{n:"KardiaMobile 6L",i:"6-lead home ECG",f:false},{n:"Kardia app",i:"AI-powered ECG interpretation + AF detection",f:false}],
+adv:"medium",advN:"Dedicated NZ distributor with local phone number and website. KardiaMobile is the world's most widely used personal ECG. Growing rapidly as consumer wearable heart health expands.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Home ECG and AF detection awareness is a prime Heart of Aotearoa editorial topic.",ep:false,nzco:false,col:"#E24B4A",ini:"KDM"},
+
+{id:"adherium",name:"Adherium (Hailie Smart Inhaler)",hq:"New Zealand (ASX listed)",nzP:"NZ-founded company. Smart inhaler hardware + app. AstraZeneca investment partner.",type:"Device",areas:["Asthma","COPD"],mag:["BB"],
+audience:"Both",
+consumerAngle:"Why inhaler technique and timing matters — Hailie sensor as a tool to understand your own adherence. Improving asthma and COPD control through better inhaler habits.",
+hcpAngle:"Digital inhaler data in clinical decision-making — adherence monitoring before biologic step-up. Using Hailie platform data to differentiate poor control vs. poor adherence.",
+products:[{n:"Hailie Smart Inhaler sensor",i:"Adherence tracking for Ventolin, Symbicort, Fostair",f:false,note:"$2.6M capital raise 2025 — US rollout"},{n:"Hailie Platform",i:"HCP-facing adherence dashboard",f:false}],
+adv:"medium",advN:"NZ-founded, ASX-listed. AstraZeneca investor. $2.6M capital raise in 2025. Strong NZ-made story relevant to CRFNZ's inhaler adherence messaging.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. CRFNZ could position as the NZ health charity partner for a domestic awareness push around inhaler adherence.",ep:false,nzco:true,col:"#1D9E75",ini:"ADH"},
+
+{id:"omron",name:"Omron Healthcare NZ",hq:"Japan",nzP:"NZ distributor (Omron in all major NZ pharmacies — Chemist Warehouse, Life Pharmacy, Unichem).",type:"Device",areas:["Blood Pressure","Cardiac"],mag:["HOA"],
+audience:"Consumer",
+consumerAngle:"Home blood pressure monitoring — how to measure correctly, what readings mean, when to see a GP. Omron Complete: detecting AF at home. Blood pressure targets and self-management for people on cardiac medication.",
+hcpAngle:"",
+products:[{n:"Omron blood pressure monitors",i:"Home BP monitoring — #1 global consumer brand",f:false},{n:"Omron Complete (BP + ECG)",i:"Home AF detection + BP",f:false,note:"New AF detection feature"},{n:"HeartGuide wrist monitor",i:"Wrist-worn BP + HR",f:false}],
+adv:"high",advN:"Omron is the #1 consumer blood pressure monitor brand globally — sold in every NZ pharmacy. New Complete model also detects AF. Very active NZ pharmacy and digital marketing.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Home blood pressure monitoring awareness is a natural Heart of Aotearoa editorial co-funding opportunity.",ep:false,nzco:false,col:"#A32D2D",ini:"OMR"},
+
+{id:"withings",name:"Withings",hq:"France",nzP:"Available NZ via JB Hi-Fi, Harvey Norman, direct online. Growing ANZ presence.",type:"Device",areas:["Blood Pressure","Cardiac"],mag:["HOA"],
+audience:"Consumer",
+consumerAngle:"Connected health wearables — ScanWatch for detecting AF on the wrist. SpO2 monitoring for people with respiratory conditions. Understanding your heart health data. Premium 'take charge of your heart health' messaging.",
+hcpAngle:"",
+products:[{n:"ScanWatch 2",i:"ECG + SpO2 + AF detection wearable",f:false,note:"CE/FDA cleared"},{n:"BPM Connect Pro",i:"WiFi/Bluetooth BP monitor",f:false},{n:"ScanWatch Light",i:"Continuous HR + SpO2",f:false}],
+adv:"medium",advN:"Premium connected health brand expanding in ANZ. ScanWatch 2 detects AF and measures SpO2 — relevant to both cardiac and respiratory audiences.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. AF detection and SpO2 monitoring creates a compelling editorial angle for both Heart of Aotearoa and Better Breathing.",ep:false,nzco:false,col:"#533AB7",ini:"WTH"},
+
+{id:"nexus6",name:"Nexus6 (SmartTrack)",hq:"New Zealand",nzP:"NZ-founded company (Auckland). SmartTrack device used in NZ and international clinical research.",type:"Device",areas:["Asthma","COPD"],mag:["BB"],
+audience:"HCP",
+consumerAngle:"",
+hcpAngle:"SmartTrack real-world adherence data for clinical research and practice — understanding adherence patterns in asthma and COPD populations. NZ-made tool used in published peer-reviewed clinical trials.",
+products:[{n:"SmartTrack inhaler monitor",i:"MDI adherence tracking — clinical/research use",f:false,note:"NZ-made, used in clinical trials"},{n:"Research platform",i:"Real-world adherence data collection",f:false}],
+adv:"low",advN:"Small NZ-founded health tech company. SmartTrack used in published clinical trials. Niche but a genuine NZ respiratory digital health success story.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. NZ-made story — could co-create HCP-targeted inhaler adherence content with CRFNZ.",ep:false,nzco:true,col:"#0F6E56",ini:"NX6"},
+
+// ── AIR QUALITY ──────────────────────────────────────────────────────────────
+{id:"iqair",name:"IQAir NZ",hq:"Switzerland",nzP:"Available NZ (iqair.com/nz). Premium HEPA air purifiers via online and specialist retailers.",type:"Air",areas:["Asthma","COPD"],mag:["BB"],
+audience:"Consumer",
+consumerAngle:"Indoor air quality and respiratory health — what particles trigger asthma and COPD. Wildfire smoke season advice. Home allergen reduction (dust mites, pollen, pet dander). Air quality monitoring for at-risk households.",
+hcpAngle:"",
+products:[{n:"HealthPro Plus",i:"HEPA air purifier — asthma / allergy / COPD",f:false},{n:"AirVisual Pro",i:"Indoor/outdoor air quality monitor",f:false}],
+adv:"medium",advN:"Premium positioning — actively markets to people with asthma and respiratory conditions. Air quality is a growing editorial topic for respiratory health organisations.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Air quality content is highly relevant for Better Breathing magazine.",ep:false,nzco:false,col:"#3B6D11",ini:"IQA"},
+
+{id:"dyson",name:"Dyson NZ",hq:"UK/Singapore",nzP:"Full NZ retail presence (dyson.co.nz + all major retailers). NZ subsidiary.",type:"Air",areas:["Asthma"],mag:["BB"],
+audience:"Consumer",
+consumerAngle:"Home allergen reduction for asthma sufferers — how air purifiers work and which particles matter. Dyson explicitly markets to allergy and asthma audiences with scientific claims. Great seasonal campaign angle (spring pollen, winter damp).",
+hcpAngle:"",
+products:[{n:"Purifier Cool Formaldehyde",i:"HEPA air purifier + fan",f:false},{n:"Purifier Hot+Cool",i:"HEPA air purifier + heater",f:false},{n:"Dyson Zone",i:"Personal air purifying headphones",f:false}],
+adv:"high",advN:"Very active NZ advertiser. Markets air purifiers explicitly to allergy and asthma sufferers with research-backed claims. Premium brand, wide NZ consumer awareness.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Allergen reduction for asthma patients is a natural Better Breathing magazine editorial co-funding angle.",ep:false,nzco:false,col:"#BA7517",ini:"DYS"},
+
+// ── INSURERS ────────────────────────────────────────────────────────────────
+{id:"sxh",name:"Southern Cross Health Society",hq:"New Zealand",nzP:"NZ-headquartered health insurer. Largest in NZ with ~900,000 members.",type:"Insurer",areas:["Asthma","COPD","Cardiac","Blood Pressure","Cholesterol"],mag:["BB","HOA"],
+audience:"Consumer",
+consumerAngle:"Preventative health content for members — managing your respiratory or cardiac condition, knowing when to see a specialist, getting value from your health insurance. Wellness education aligned with member engagement strategy. Very wide audience reach.",
+hcpAngle:"",
+products:[{n:"Health insurance plans",i:"Covers specialist, surgical, diagnostic care incl. respiratory and cardiac",f:false,note:"NZ's largest health insurer ~900k members"}],
+adv:"high",advN:"Very active NZ advertiser — TV, digital, radio. Strong NZ brand. Members directly overlap with CRFNZ's respiratory and cardiac audiences.",
+charity:"Various NZ health causes",charityN:"Southern Cross has history of supporting NZ health causes. Partnering with CRFNZ on member education content fits their 'better health for all Kiwis' positioning.",ep:false,nzco:true,col:"#185FA5",ini:"SXH"},
+
+{id:"nib",name:"nib NZ",hq:"Australia (NZX listed, NZ subsidiary)",nzP:"NZ subsidiary (nib.co.nz). Second largest health insurer in NZ.",type:"Insurer",areas:["Asthma","COPD","Cardiac","Blood Pressure","Cholesterol"],mag:["BB","HOA"],
+audience:"Consumer",
+consumerAngle:"Preventative health and wellness for members — respiratory and cardiac condition management, healthy living content. Member education and engagement aligned with nib's preventative health strategy.",
+hcpAngle:"",
+products:[{n:"Health insurance plans",i:"Respiratory, cardiac and specialist cover",f:false}],
+adv:"medium",advN:"Active NZ digital and TV advertising. Growing NZ health insurance market. Wellness and preventative health content aligns with member engagement strategy.",
+charity:"None confirmed",charityN:"No confirmed NZ charity sponsorships. Preventative health content for at-risk conditions is a natural member-value proposition for nib.",ep:false,nzco:false,col:"#2AB27B",ini:"NIB"},
 ];
 
-const ALL_AREAS=["Asthma","COPD","Lung Cancer","Vaccinations","Cardiac","Blood Pressure","Cholesterol","Sleep Apnea"];
-const AREA_COLORS={"Asthma":{bg:"#E1F5EE",text:"#085041",border:"#5DCAA5"},"COPD":{bg:"#E6F1FB",text:"#042C53",border:"#378ADD"},"Lung Cancer":{bg:"#FCEBEB",text:"#501313",border:"#E24B4A"},"Vaccinations":{bg:"#EAF3DE",text:"#173404",border:"#639922"},"Cardiac":{bg:"#FBEAF0",text:"#4B1528",border:"#D4537E"},"Blood Pressure":{bg:"#FAECE7",text:"#4A1B0C",border:"#D85A30"},"Cholesterol":{bg:"#FAEEDA",text:"#412402",border:"#BA7517"},"Sleep Apnea":{bg:"#EEEDFE",text:"#26215C",border:"#7F77DD"}};
-const ADV={high:{label:"🟢 Actively advertising",bg:"#EAF3DE",text:"#27500A",border:"#97C459"},medium:{label:"🟡 Moderate NZ activity",bg:"#FAEEDA",text:"#633806",border:"#EF9F27"},low:{label:"🔴 Low consumer presence",bg:"#FCEBEB",text:"#501313",border:"#F09595"}};
-const TYPE_STYLE={Pharma:{cls:"type-pharma",label:"💊 Pharma"},Device:{cls:"type-device",label:"🩺 Device"},"Air quality":{cls:"type-air",label:"🌿 Air quality"},Insurer:{cls:"type-insurer",label:"🛡 Insurer"}};
-const MAG_LABELS={BB:{cls:"mag-bb",label:"Better Breathing"},HOA:{cls:"mag-hoa",label:"Heart of Aotearoa"},both:{cls:"mag-both",label:"Both magazines"}};
+const AREAS=["Asthma","COPD","Lung Cancer","Vaccinations","Cardiac","Blood Pressure","Cholesterol","Sleep Apnea"];
+const AC={"Asthma":{bg:"#E1F5EE",tx:"#085041",bo:"#5DCAA5"},"COPD":{bg:"#E6F1FB",tx:"#042C53",bo:"#378ADD"},"Lung Cancer":{bg:"#FCEBEB",tx:"#501313",bo:"#E24B4A"},"Vaccinations":{bg:"#EAF3DE",tx:"#173404",bo:"#639922"},"Cardiac":{bg:"#FBEAF0",tx:"#4B1528",bo:"#D4537E"},"Blood Pressure":{bg:"#FAECE7",tx:"#4A1B0C",bo:"#D85A30"},"Cholesterol":{bg:"#FAEEDA",tx:"#412402",bo:"#BA7517"},"Sleep Apnea":{bg:"#EEEDFE",tx:"#26215C",bo:"#7F77DD"}};
+const AV={high:{label:"🟢 Actively advertising",bg:"#EAF3DE",tx:"#27500A",bo:"#97C459"},medium:{label:"🟡 Moderate NZ activity",bg:"#FAEEDA",tx:"#633806",bo:"#EF9F27"},low:{label:"🔴 Low NZ consumer presence",bg:"#FCEBEB",tx:"#501313",bo:"#F09595"}};
+const TS={Pharma:{cls:"type-p",lb:"💊 Pharma"},Device:{cls:"type-d",lb:"🩺 Device"},Air:{cls:"type-a",lb:"🌿 Air quality"},Insurer:{cls:"type-i",lb:"🛡 Insurer"}};
+const SL={"Pharma":"💊 Pharmaceutical companies","Device":"🩺 Medical &amp; diagnostic devices","Air":"🌿 Air quality &amp; home environment","Insurer":"🛡 Health insurers"};
+const ABADGE={Consumer:{bg:"#E6F1FB",tx:"#042C53",bo:"#85B7EB",lb:"👥 Consumer / patient"},HCP:{bg:"#EEEDFE",tx:"#26215C",bo:"#AFA9EC",lb:"🩺 HCP / clinical"},Both:{bg:"#E1F5EE",tx:"#04342C",bo:"#1D9E75",lb:"🔄 Both audiences"}};
 
-let areaFilter=[],advFilter="all",charityFilter="all",typeFilter="all",magFilter="all",search="",expanded=null;
+let af=[],advF="all",cF="all",tF="all",mF="all",audF="all",s="",exp=null;
 
-function tag(text,bg,color,border){return`<span class="tag" style="background:${bg};color:${color};border-color:${border}">${text}</span>`}
+function tg(t,bg,tx,bo){return`<span style="display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;border:1px solid;white-space:nowrap;background:${bg};color:${tx};border-color:${bo}">${t}</span>`}
 
-function renderStats(filtered){
-  const pharma=filtered.filter(c=>c.type==="Pharma").length;
-  const device=filtered.filter(c=>c.type==="Device").length;
-  const air=filtered.filter(c=>c.type==="Air quality").length;
-  const insurer=filtered.filter(c=>c.type==="Insurer").length;
-  const existing=filtered.filter(c=>c.existingPartner).length;
-  const nzco=filtered.filter(c=>c.nzCompany).length;
+function renderStats(fl){
+  const ph=fl.filter(c=>c.type==="Pharma").length,dv=fl.filter(c=>c.type==="Device").length;
+  const ai=fl.filter(c=>c.type==="Air").length,ins=fl.filter(c=>c.type==="Insurer").length;
+  const ep=fl.filter(c=>c.ep).length,nz=fl.filter(c=>c.nzco).length;
+  const cn=fl.filter(c=>c.audience==="Consumer"||c.audience==="Both").length;
+  const hc=fl.filter(c=>c.audience==="HCP"||c.audience==="Both").length;
   document.getElementById("stats").innerHTML=`
-    <div class="stat"><div class="stat-n">${filtered.length}</div><div class="stat-l">shown</div></div>
-    <div class="stat"><div class="stat-n">${pharma}</div><div class="stat-l">pharma</div></div>
-    <div class="stat"><div class="stat-n">${device}</div><div class="stat-l">devices</div></div>
-    <div class="stat"><div class="stat-n">${air+insurer}</div><div class="stat-l">other</div></div>
-    <div class="stat"><div class="stat-n">${existing}</div><div class="stat-l">existing partners</div></div>
-    <div class="stat"><div class="stat-n">${nzco}</div><div class="stat-l">NZ companies</div></div>`;
+    <div class="stat"><div class="stat-n">${fl.length}</div><div class="stat-l">shown</div></div>
+    <div class="stat"><div class="stat-n">${ph}</div><div class="stat-l">pharma</div></div>
+    <div class="stat"><div class="stat-n">${dv}</div><div class="stat-l">devices</div></div>
+    <div class="stat"><div class="stat-n">${ai+ins}</div><div class="stat-l">other</div></div>
+    <div class="stat"><div class="stat-n" style="color:#0C447C">${cn}</div><div class="stat-l">consumer angle</div></div>
+    <div class="stat"><div class="stat-n" style="color:#3C3489">${hc}</div><div class="stat-l">HCP angle</div></div>
+    <div class="stat"><div class="stat-n">${ep}</div><div class="stat-l">existing partners</div></div>
+    <div class="stat"><div class="stat-n">${nz}</div><div class="stat-l">NZ companies</div></div>`;
 }
 
 function renderChips(){
-  let html=ALL_AREAS.map(a=>{
-    const c=AREA_COLORS[a];const active=areaFilter.includes(a);
-    return`<button class="chip${active?' active':''}" style="${active?`background:${c.bg};color:${c.text};border-color:${c.border};font-weight:700`:''}" onclick="toggleArea('${a}')">${a}</button>`;
+  let h=AREAS.map(a=>{const c=AC[a];const act=af.includes(a);
+    return`<button class="chip${act?' active':''}" style="${act?`background:${c.bg};color:${c.tx};border-color:${c.bo};font-weight:700`:''}" onclick="tgA('${a}')">${a}</button>`;
   }).join("");
-  if(areaFilter.length>0)html+=`<button class="chip chip-danger" onclick="clearAreas()">Clear ✕</button>`;
-  document.getElementById("chips").innerHTML=html;
+  if(af.length>0)h+=`<button class="chip chip-x" onclick="clA()">Clear ✕</button>`;
+  document.getElementById("chips").innerHTML=h;
 }
 
-function sectionLabel(type){const m={"Pharma":"💊 Pharmaceutical companies","Device":"🩺 Medical &amp; diagnostic devices","Air quality":"🌿 Air quality &amp; home environment","Insurer":"🛡 Health insurers"};return m[type]||type}
-
 function render(){
-  const filtered=COMPANIES.filter(c=>{
-    if(search){const s=search.toLowerCase();if(!c.name.toLowerCase().includes(s)&&!c.areas.some(a=>a.toLowerCase().includes(s))&&!c.keyProducts.some(p=>p.name.toLowerCase().includes(s)))return false}
-    if(areaFilter.length>0&&!areaFilter.some(a=>c.areas.includes(a)))return false;
-    if(advFilter!=="all"&&c.advertising!==advFilter)return false;
-    if(typeFilter!=="all"&&c.type!==typeFilter)return false;
-    if(magFilter!=="all"&&!c.magazine.includes(magFilter))return false;
-    if(charityFilter==="yes"&&c.nzCharity==="None confirmed")return false;
-    if(charityFilter==="none"&&c.nzCharity!=="None confirmed")return false;
+  const fl=D.filter(c=>{
+    if(s){const q=s.toLowerCase();if(!c.name.toLowerCase().includes(q)&&!c.areas.some(a=>a.toLowerCase().includes(q))&&!c.products.some(p=>p.n.toLowerCase().includes(q)))return false}
+    if(af.length>0&&!af.some(a=>c.areas.includes(a)))return false;
+    if(advF!=="all"&&c.adv!==advF)return false;
+    if(tF!=="all"&&c.type!==tF)return false;
+    if(mF!=="all"&&!c.mag.includes(mF))return false;
+    if(cF==="yes"&&c.charity==="None confirmed")return false;
+    if(cF==="none"&&c.charity!=="None confirmed")return false;
+    if(audF!=="all"&&c.audience!==audF)return false;
     return true;
   });
-
-  renderStats(filtered);
-  document.getElementById("count").textContent=`Showing ${filtered.length} of ${COMPANIES.length} prospects`;
-
-  const typeOrder=["Pharma","Device","Air quality","Insurer"];
-  const grouped={};typeOrder.forEach(t=>{grouped[t]=filtered.filter(c=>c.type===t)});
-
+  renderStats(fl);
+  document.getElementById("count").textContent=`Showing ${fl.length} of ${D.length} prospects`;
+  const order=["Pharma","Device","Air","Insurer"];const gp={};order.forEach(t=>{gp[t]=fl.filter(c=>c.type===t)});
   let html="";
-  typeOrder.forEach(t=>{
-    const group=grouped[t];if(!group.length)return;
-    html+=`<div class="section-divider">${sectionLabel(t)} (${group.length})</div>`;
-    group.forEach(c=>{
-      const isOpen=expanded===c.id;
-      const adv=ADV[c.advertising];
-      const charityBg=c.nzCharity==="None confirmed"?"#F1EFE8":c.existingPartner?"#E1F5EE":"#EEEDFE";
-      const charityText=c.nzCharity==="None confirmed"?"#5F5E5A":c.existingPartner?"#04342C":"#26215C";
-      const charityBorder=c.nzCharity==="None confirmed"?"#B4B2A9":c.existingPartner?"#1D9E75":"#7F77DD";
-      const charityLabel=c.nzCharity==="None confirmed"?"No NZ charity yet":c.nzCharity;
-      const tc=TYPE_STYLE[c.type];
+  order.forEach(t=>{
+    const g=gp[t];if(!g.length)return;
+    html+=`<div class="sdiv">${SL[t]} (${g.length})</div>`;
+    g.forEach(c=>{
+      const isO=exp===c.id;const av=AV[c.adv];const ts=TS[c.type];const ab=ABADGE[c.audience];
+      const cBg=c.charity==="None confirmed"?"#F1EFE8":c.ep?"#E1F5EE":"#EEEDFE";
+      const cTx=c.charity==="None confirmed"?"#5F5E5A":c.ep?"#04342C":"#26215C";
+      const cBo=c.charity==="None confirmed"?"#B4B2A9":c.ep?"#1D9E75":"#7F77DD";
+      const cLb=c.charity==="None confirmed"?"No NZ charity yet":c.charity;
+      const mags=c.mag.length===2
+        ?tg("Both magazines","#EEEDFE","#26215C","#7F77DD")
+        :c.mag.map(m=>m==="BB"?tg("Better Breathing","#E1F5EE","#085041","#5DCAA5"):tg("Heart of Aotearoa","#FBEAF0","#4B1528","#D4537E")).join("");
+      const prods=c.products.map(p=>`<div class="pr"><span class="fp ${p.f?'fy':'fn'}">${p.f?'Funded':'Unfunded'}</span><div><span class="pn">${p.n}</span><span class="pi">${p.i}</span>${p.note?`<span class="pnote">— ${p.note}</span>`:''}</div></div>`).join("");
 
-      const mags=c.magazine.length===2?`<span class="mag-badge mag-both">Both magazines</span>`:c.magazine.map(m=>`<span class="mag-badge mag-${m==="BB"?"bb":"hoa"}">${m==="BB"?"Better Breathing":"Heart of Aotearoa"}</span>`).join("");
+      const consumerBlock=c.consumerAngle
+        ?`<div class="aud-card aud-consumer"><div class="aud-label">👥 Consumer / patient angle</div><div class="aud-text">${c.consumerAngle}</div></div>`
+        :`<div class="aud-card aud-none"><div class="aud-label">👥 Consumer / patient angle</div><div class="aud-text" style="color:var(--text3);font-style:italic">Not applicable — HCP-only focus.</div></div>`;
+      const hcpBlock=c.hcpAngle
+        ?`<div class="aud-card aud-hcp"><div class="aud-label">🩺 HCP / clinical angle</div><div class="aud-text">${c.hcpAngle}</div></div>`
+        :`<div class="aud-card aud-none"><div class="aud-label">🩺 HCP / clinical angle</div><div class="aud-text" style="color:var(--text3);font-style:italic">Not applicable — consumer-only focus.</div></div>`;
 
-      const productRows=c.keyProducts.map(p=>`<div class="product-row"><span class="fp ${p.funded?'fy':'fn'}">${p.funded?"Funded":"Unfunded"}</span><div><span class="pname">${p.name}</span><span class="pind">${p.indication}</span>${p.note?`<span class="pnote">— ${p.note}</span>`:""}</div></div>`).join("");
-
-      html+=`<div class="card" id="card-${c.id}">
-        <div class="card-header" onclick="toggleCard('${c.id}')">
-          <div class="initials" style="background:${c.color}">${c.initials}</div>
-          <div class="meta">
-            <div class="name-row">
-              <span class="name">${c.name}</span>
+      html+=`<div class="card">
+        <div class="ch" onclick="tgC('${c.id}')">
+          <div class="av" style="background:${c.col}">${c.ini}</div>
+          <div class="me">
+            <div class="nr">
+              <span class="nm">${c.name}</span>
               <span class="hq">${c.hq}</span>
-              ${c.existingPartner?tag("✓ Existing CRFNZ partner","#E1F5EE","#04342C","#1D9E75"):""}
-              ${c.nzCompany?`<span class="tag nz-star">🇳🇿 NZ company</span>`:""}
-              <span class="badge ${tc.cls}">${tc.label}</span>
+              ${c.ep?`<span class="tg ep">✓ Existing partner</span>`:''}
+              ${c.nzco?`<span class="tg nzco">🇳🇿 NZ company</span>`:''}
+              <span style="display:inline-block;font-size:10px;padding:1px 7px;border-radius:4px;border:1px solid;background:${ab.bg};color:${ab.tx};border-color:${ab.bo}">${ab.lb}</span>
             </div>
-            <div class="tags-row">${c.areas.map(a=>{const ac=AREA_COLORS[a]||{bg:"#F1EFE8",text:"#444",border:"#aaa"};return tag(a,ac.bg,ac.text,ac.border)}).join("")}</div>
-            <div class="badges-row">
-              <span class="badge" style="background:${adv.bg};color:${adv.text};border-color:${adv.border}">${adv.label}</span>
-              <span class="badge" style="background:${charityBg};color:${charityText};border-color:${charityBorder}">♡ ${charityLabel}</span>
-              <div class="mag-badges">${mags}</div>
+            <div class="tr">${c.areas.map(a=>{const ac=AC[a]||{bg:"#F1EFE8",tx:"#444",bo:"#aaa"};return tg(a,ac.bg,ac.tx,ac.bo)}).join("")}</div>
+            <div class="br">
+              <span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--rsm);border:1px solid;background:${av.bg};color:${av.tx};border-color:${av.bo}">${av.label}</span>
+              <span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--rsm);border:1px solid;background:${cBg};color:${cTx};border-color:${cBo}">♡ ${cLb}</span>
+              ${mags}
             </div>
           </div>
-          <span class="chevron${isOpen?" open":""}">▼</span>
+          <span class="cv${isO?' open':''}">▼</span>
         </div>
-        <div class="card-body${isOpen?" open":""}">
-          <div class="body-grid">
+        <div class="cb${isO?' open':''}">
+          <div class="bg2">
             <div>
               <p class="sl">Products / devices</p>
-              ${productRows}
+              ${prods}
+              <p class="sl" style="margin-top:12px">NZ advertising activity</p>
+              <p class="bt">${c.advN}</p>
+              <p class="sl">NZ charity / community funding</p>
+              <p class="bt">${c.charityN}</p>
+              <p class="sl">NZ office / presence</p>
+              <p class="pre">${c.nzP}</p>
             </div>
             <div>
-              <p class="sl">NZ advertising activity</p>
-              <p class="btext">${c.advertisingNote}</p>
-              <p class="sl">NZ charity / community funding</p>
-              <p class="btext">${c.nzCharityDetail}</p>
-              <p class="sl">NZ office / presence</p>
-              <p class="pres">${c.nzPresence}</p>
+              <p class="sl">Campaign audience angles</p>
+              <div class="aud-grid">
+                ${consumerBlock}
+                ${hcpBlock}
+              </div>
             </div>
           </div>
         </div>
       </div>`;
     });
   });
-
-  if(!html)html=`<div class="no-results">No prospects match your current filters.</div>`;
+  if(!html)html=`<div class="no-r">No prospects match your current filters.</div>`;
   document.getElementById("cards").innerHTML=html;
   renderChips();
 }
 
-function toggleCard(id){expanded=expanded===id?null:id;render()}
-function toggleArea(a){areaFilter=areaFilter.includes(a)?areaFilter.filter(x=>x!==a):[...areaFilter,a];render()}
-function clearAreas(){areaFilter=[];render()}
-
-document.getElementById("search").addEventListener("input",e=>{search=e.target.value;render()});
-document.getElementById("advFilter").addEventListener("change",e=>{advFilter=e.target.value;render()});
-document.getElementById("typeFilter").addEventListener("change",e=>{typeFilter=e.target.value;render()});
-document.getElementById("magFilter").addEventListener("change",e=>{magFilter=e.target.value;render()});
-document.getElementById("charityFilter").addEventListener("change",e=>{charityFilter=e.target.value;render()});
-
+function tgC(id){exp=exp===id?null:id;render()}
+function tgA(a){af=af.includes(a)?af.filter(x=>x!==a):[...af,a];render()}
+function clA(){af=[];render()}
+document.getElementById("search").addEventListener("input",e=>{s=e.target.value;render()});
+document.getElementById("advF").addEventListener("change",e=>{advF=e.target.value;render()});
+document.getElementById("typeF").addEventListener("change",e=>{tF=e.target.value;render()});
+document.getElementById("magF").addEventListener("change",e=>{mF=e.target.value;render()});
+document.getElementById("cF").addEventListener("change",e=>{cF=e.target.value;render()});
+document.getElementById("audF").addEventListener("change",e=>{audF=e.target.value;render()});
 render();
 </script>
 </body>
